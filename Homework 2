@@ -1,0 +1,126 @@
+Group Members: 
+Irania Matos 
+Aqib Shahzad
+Marwan Kenawy
+Nancy Reyes Soto
+
+Lab 1 Results.
+For lab 1 we decided to find the counts how many times each face (1–6) appeared in 40 rolls and 1000 rolls, using the following codes. 
+
+sim_rolls_40<-sample(1:6, size=40,replace=TRUE) # 40 rolls 
+> table(sim_rolls_40)
+sim_rolls_40
+1 2 3 4 5 6 
+1 9 8 7 7 8 
+> prop.table(table(sim_rolls_40))
+sim_rolls_40
+    1     2     3     4     5     6 
+0.025 0.225 0.200 0.175 0.175 0.200 
+> 
+> sim_rolls_1000<-sample(1:6, size=1000, replace=TRUE) #1000 rolls 
+> table(sim_rolls_1000) 
+sim_rolls_1000
+  1   2   3   4   5   6 
+151 176 185 172 165 151 
+> prop.table(table(sim_rolls_1000))
+sim_rolls_1000
+    1     2     3     4     5     6 
+0.151 0.176 0.185 0.172 0.165 0.151 
+> 
+
+We found interesting that when it’s only 40 rolls, the distribution of die faces is uneven and may not look fair, 
+but with 1,000 roll much closer to the expected 1/6 for each side. This demonstrates the law of large numbers: 
+as the number of trials increases, the observed frequencies converge to the theoretical probability.
+
+
+
+
+Playlist experiment: 
+
+I created a playlist on Apple music with 40 songs in total and did a shuffle of this playlist and reordered the name of the song and artist. 
+Experimental setup
+•	Apple Music 
+•	N= 40 songs 
+•	15 different Artists  
+•	Some artists are repeated (no more than 3 songs from the same artists)
+
+Hypothesis
+•	 H₀ (null): Shuffle order is random (any permutation of 40 is equally likely).
+•	 H₁ (alt): Shuffle algorithm biases toward or against certain artists appearing near each other.
+
+Recorded data
+shuffle_results <- data.frame(
++   Shuffle = 1:40,
++   Song = c(
++     "just cant get enough","angel","si entendieras","Into You","Callaita",
++     "Best Iever Had","Bartier Cardi","Boomerang","A drop in the Ocean",
++     "Cake By the Ocean","Houdini","Calypso","Training Season","Calma( Remix)",
++     "Flowers","Halo","Believer","Im not the Only One","I'm Good(Blue)","Ex's & Oh's",
++     "Adore You","Latch","Break up with your girlfriend","Enough Miami","Baby Nueva",
++     "Insomnia","Calm down","Location","Baticano","Gyal You A Party Animal",
++     "Bad Romance","Born This Way","AY dios mio","Caliente","Lala","Sin Miedo a Nada",
++     "acdefu","Fui a Jamaica","Dangerous Woman","Carolina"
++   ),
++   Artist = c(
++     "Black Eyed Peas","Grupo Frontera","Alex Bueno","Ariana Grande","Bad Bunny",
++     "Drake","Cardi B","Romeo Santos","Ron Pope","DNCE",
++     "Dua Lipa","Luis Fonsi","Dua Lipa","Pedro Capo","Miley Cyrus","Beyonce",
++     "Imagine Dragons","Sam Smith","David Guetta","Elle King","Miley Cyrus",
++     "Disclosure ft Sam Smith","Ariana Grande","Cardi B","Bad Bunny","Daya",
++     "Rema & Selena Gomez","Khalid","Bad Bunny","Charly Black","Lady Gaga","Lady Gaga",
++     "Karol G","El Tonto","Myke Towers","Alex Ubago","Gayle","Romeo Santos",
++     "Ariana Grande","Karol G"
++   )
++ )
+> print(shuffle_results)  # prints the table in the console
+   Shuffle                          Song                  Artist
+1        1          just cant get enough         Black Eyed Peas
+2        2                         angel          Grupo Frontera
+3        3                si entendieras              Alex Bueno
+4        4                      Into You           Ariana Grande
+5        5                      Callaita               Bad Bunny
+6        6                Best Iever Had                   Drake
+7        7                 Bartier Cardi                 Cardi B
+8        8                     Boomerang            Romeo Santos
+9        9           A drop in the Ocean                Ron Pope
+10      10             Cake By the Ocean                    DNCE
+11      11                       Houdini                Dua Lipa
+12      12                       Calypso              Luis Fonsi
+13      13               Training Season                Dua Lipa
+14      14                 Calma( Remix)              Pedro Capo
+15      15                       Flowers             Miley Cyrus
+16      16                          Halo                 Beyonce
+17      17                      Believer         Imagine Dragons
+18      18           Im not the Only One               Sam Smith
+19      19                I'm Good(Blue)            David Guetta
+20      20                   Ex's & Oh's               Elle King
+21      21                     Adore You             Miley Cyrus
+22      22                         Latch Disclosure ft Sam Smith
+23      23 Break up with your girlfriend           Ariana Grande
+24      24                  Enough Miami                 Cardi B
+25      25                    Baby Nueva               Bad Bunny
+26      26                      Insomnia                    Daya
+27      27                     Calm down     Rema & Selena Gomez
+28      28                      Location                  Khalid
+29      29                      Baticano               Bad Bunny
+30      30       Gyal You A Party Animal            Charly Black
+31      31                   Bad Romance               Lady Gaga
+32      32                 Born This Way               Lady Gaga
+33      33                   AY dios mio                 Karol G
+34      34                      Caliente                El Tonto
+35      35                          Lala             Myke Towers
+36      36              Sin Miedo a Nada              Alex Ubago
+37      37                        acdefu                   Gayle
+38      38                 Fui a Jamaica            Romeo Santos
+39      39               Dangerous Woman           Ariana Grande
+40      40                      Carolina                 Karol G
+> 
+
+Conclusion 
+I have 40 songs, and each song appeared exactly once in your recorded 40 plays. However, looking at artist clustering, I saw a few interesting patterns 
+(Lady Gaga consecutive, Dua Lipa close together, Bad Bunny somewhat clustered). These are suggestive, but not conclusive. 
+For next time, I would need to select a larger data to have a better conclusion. 
+
+
+
+
