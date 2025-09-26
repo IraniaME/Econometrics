@@ -1,0 +1,80 @@
+Group Names: 
+Irania Matos 
+Aqib Shahzad
+Ava Droznik
+Kerra Sinanan
+
+
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+setwd("/Users/irania/Downloads")
+load("d_HHP2020_24.RData")
+names(d_HHP2020_24)
+
+
+#Marital Status by Education
+df_prop <- d_HHP2020_24 %>%
+  group_by(Education, Mar_Stat) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  group_by(Education) %>%
+  mutate(prop = n / sum(n))
+
+ggplot(df_prop, aes(x = Education, y = prop, color = Mar_Stat, group = Mar_Stat)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Marital Status by Education",
+       x = "Education", y = "Proportion", color = "Marital Status") +
+  theme_minimal()
+
+
+#We grouped the dataset by Education and Marital Status and calculated proportions within each education level.
+The resulting graph shows how marital status distribution shifts across different education levels.
+Interesting finding: individuals with advanced degrees are more likely to be married compared to those with lower education levels. 
+Divorce appears more evenly spread across lower and mid-level education categories. Another interesting factor is that betwee widowed education
+vs married there is a large gap, which makes us think why??  Why is there such a large gap?
+
+
+#Marital Status by Age
+
+df_prop <- d_HHP2020_24 %>%
+  group_by(Age, Mar_Stat) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  group_by(Age) %>%
+  mutate(prop = n / sum(n))
+
+ggplot(df_prop, aes(x = Age, y = prop, color = Mar_Stat, group = Mar_Stat)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Marital Status by Age",
+       x = "Age", y = "Proportion", color = "Marital Status") +
+  theme_minimal()
+
+#We next grouped the data by Age and Marital Status, again computing proportions.
+The line graph highlights the evolution of marital status as people age.
+Interesting finding: marriage rates rise steeply in the late 20s and 30s, peaking around middle age, 
+while divorce has a noticeable uptick in the mid-30s to 40s. This matches common life-cycle expectations.
+
+
+#INCOME BY AGE 
+df_prop <- d_HHP2020_24 %>%
+  group_by(Age, income_midpoint) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  group_by(Age) %>%
+  mutate(prop = n / sum(n))
+
+ggplot(df_prop, aes(x = Age, y = prop, color = income_midpoint, group = income_midpoint)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Income Midpoint by Age",
+       x = "Age", y = "Proportion", color = "income_midpoint") +
+  theme_minimal()
+
+
+#Finally, We grouped by Age and Income Midpoint and calculated the proportions.
+The graph shows the distribution of income brackets by age.
+Interesting finding: younger individuals (20s) are concentrated in lower income brackets, but 
+proportions in higher brackets grow steadily into the 40s and 50s. However, the curve flattens near the late 50s, 
+suggesting income growth slows toward the end of the working years.
+
+
